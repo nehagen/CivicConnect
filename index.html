@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CivicConnect</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand">🏙️ CivicConnect</div>
+<select id="language"><option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिन्दी</option></select></header>
+<main>
+<section class="hero"><div>
+<p class="eyebrow">SMART CIVIC ISSUE REPORTING</p>
+<h1 id="heroTitle">Report an issue. Track progress. Improve your community.</h1>
+<p id="heroText">Report civic problems with location, category and seriousness so authorities can organize and prioritize action.</p>
+<button onclick="showSection('report')">📢 Report an Issue</button>
+<button class="secondary" onclick="showSection('track')">🔎 Track Report</button>
+</div><div class="stats">
+<div><b id="totalCount">0</b><span>Reports</span></div>
+<div><b id="openCount">0</b><span>Open</span></div>
+<div><b id="resolvedCount">0</b><span>Resolved</span></div>
+</div></section>
+
+<nav><button class="tab active" data-section="home" onclick="showSection('home')">Home</button>
+<button class="tab" data-section="report" onclick="showSection('report')">Report Issue</button>
+<button class="tab" data-section="track" onclick="showSection('track')">Track Report</button>
+<button class="tab" data-section="dashboard" onclick="showSection('dashboard')">Authority Dashboard</button></nav>
+
+<section id="home" class="section active"><h2>How CivicConnect Works</h2>
+<div class="steps">
+<article><b>1</b><h3>Report</h3><p>Add issue type, location, seriousness and evidence.</p></article>
+<article><b>2</b><h3>Organize</h3><p>Reports are grouped by category and location.</p></article>
+<article><b>3</b><h3>Prioritize</h3><p>High-priority issues appear first for authorities.</p></article>
+<article><b>4</b><h3>Track</h3><p>Citizens follow status and progress.</p></article>
+</div></section>
+
+<section id="report" class="section"><h2>Report a Civic Issue</h2>
+<form id="reportForm">
+<div class="grid">
+<label>Issue title *<input id="title" required placeholder="Damaged road near bus stop"></label>
+<label>Category *<select id="category" required><option value="">Select</option><option>Road & Pothole</option><option>Water Supply</option><option>Drainage & Sanitation</option><option>Street Light</option><option>Waste Management</option><option>Other</option></select></label>
+<label>Location *<input id="location" required placeholder="Area / street / landmark"></label>
+<label>Seriousness *<select id="severity" required><option value="">Select</option><option>Low</option><option>Medium</option><option>High</option><option>Critical</option></select></label>
+<label>Expected resolution date<input id="expectedDate" type="date"></label>
+<label>Contact (optional)<input id="contact" placeholder="Phone or email"></label>
+</div>
+<label>Description *<textarea id="description" required rows="5" placeholder="Describe the issue and people affected"></textarea></label>
+<label>Evidence photo<input id="photo" type="file" accept="image/*"></label>
+<button type="button" class="secondary" onclick="useLocation()">📍 Use My Location</button>
+<button type="submit">Submit Report</button>
+<p id="formMessage"></p>
+</form></section>
+
+<section id="track" class="section"><h2>Track Your Report</h2>
+<div class="search"><input id="trackId" placeholder="Report ID, e.g. CC-1001"><button onclick="trackReport()">Track</button></div>
+<div id="trackResult"></div></section>
+
+<section id="dashboard" class="section"><div class="head"><h2>Authority Dashboard</h2><button class="secondary" onclick="renderDashboard()">↻ Refresh</button></div><div id="dashboardList"></div></section>
+</main>
+<footer>© 2026 CivicConnect • Hackathon Prototype</footer>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body></html>
